@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { Delete, Edit } from '@material-ui/icons';
 import Form from './Form';
+import { withContext } from '../../context';
 
 const useStyles = makeStyles({
   paper: {
@@ -111,4 +112,4 @@ const Exercises = ({
   );
 };
 
-export default Exercises;
+export default withContext(Exercises);

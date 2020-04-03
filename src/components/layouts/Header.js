@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Header = ({ muscles, onExerciseCreate }) => {
+const Header = props => {
   const classes = useStyles();
 
   return (
@@ -22,7 +22,7 @@ const Header = ({ muscles, onExerciseCreate }) => {
           >
             Exercise Database
           </Typography>
-          <ExerciseDialog muscles={muscles} onCreate={onExerciseCreate} />
+          <ExerciseDialog />
         </Toolbar>
       </AppBar>
     </Fragment>

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Header, Footer } from './layouts';
 import Exercises from './exercises';
 import { muscles, exercises } from '../store';
+import { Provider } from '../context';
 
 class App extends Component {
   state = {
@@ -68,33 +69,28 @@ class App extends Component {
       exercise
     }));
   };
-  render() {
-    const exercises = this.getExercisesByMuscles();
-    const { category, exercise, editMode } = this.state;
 
+  getContext = () => ({
+    muscles,
+    ...this.state,
+    exercises: this.getExercisesByMuscles(),
+    onCreate: this.handleExerciseCreate,
+    onEdit: this.handleExerciseEdit,
+    onDelete: this.handleExerciseDelete,
+    onSelect: this.handleExerciseSelect,
+    onSelectEdit: this.handleExerciseSelectEdit,
+    onCategorySelect: this.handleCategorySelect
+  });
+
+  render() {
     return (
-      <Fragment>
-        <Header
-          onExerciseCreate={this.handleExerciseCreate}
-          muscles={muscles}
-        />
-        <Exercises
-          exercise={exercise}
-          exercises={exercises}
-          category={category}
-          editMode={editMode}
-          muscles={muscles}
-          onSelect={this.handleExerciseSelect}
-          onDelete={this.handleExerciseDelete}
-          onSelectEdit={this.handleExerciseSelectEdit}
-          onEdit={this.handleExerciseEdit}
-        />
-        <Footer
-          muscles={muscles}
-          category={category}
-          onSelect={this.handleCategorySelect}
-        />
-      </Fragment>
+      <Provider value={this.getContext()}>
+        <Fragment>
+          <Header />
+          <Exercises />
+          <Footer />
+        </Fragment>
+      </Provider>
     );
   }
 }

@@ -8,8 +8,8 @@ import {
 } from '@material-ui/core';
 
 import { Add } from '@material-ui/icons';
-
 import Form from './Form';
+import { withContext } from '../../context';
 
 class ExerciseDialog extends Component {
   state = {
@@ -63,4 +63,4 @@ class ExerciseDialog extends Component {
   }
 }
 
-export default ExerciseDialog;
+export default withContext(ExerciseDialog);
