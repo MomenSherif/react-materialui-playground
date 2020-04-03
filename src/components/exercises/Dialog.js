@@ -33,7 +33,12 @@ class ExerciseDialog extends Component {
 
     return (
       <Fragment>
-        <Fab size='small' onClick={this.handleToggle} aria-label='create'>
+        <Fab
+          size='small'
+          onClick={this.handleToggle}
+          aria-label='create'
+          color='secondary'
+        >
           <Add />
         </Fab>
         <Dialog

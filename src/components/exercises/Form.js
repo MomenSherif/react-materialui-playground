@@ -39,7 +39,8 @@ class Form extends Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
     // TODO validate
 
     this.props.onSubmit({
@@ -93,7 +94,12 @@ class Form extends Component {
           value={description}
           onChange={this.handleChange}
         />
-        <Button color='primary' variant='contained' onClick={this.handleSubmit}>
+        <Button
+          color='primary'
+          variant='contained'
+          onClick={this.handleSubmit}
+          disabled={!title || !muscles}
+        >
           {this.props.exercise ? 'Edit' : 'Create'}
         </Button>
       </form>

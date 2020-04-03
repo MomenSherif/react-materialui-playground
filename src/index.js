@@ -1,15 +1,31 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { red, amber } from '@material-ui/core/colors';
 
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#ff1744'
+    },
+    secondary: {
+      main: amber['A400'],
+      light: amber[200],
+      dark: amber[700]
+    },
+    type: 'dark'
+  }
+});
+
 ReactDOM.render(
-  <Fragment>
+  <ThemeProvider theme={theme}>
     <CssBaseline />
     <App />
-  </Fragment>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

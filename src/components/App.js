@@ -49,10 +49,10 @@ class App extends Component {
     }));
 
   handleExerciseDelete = id =>
-    this.setState(({ exercises }) => ({
+    this.setState(({ exercises, exercise, editMode }) => ({
       exercises: exercises.filter(exercise => exercise.id !== id),
-      editMode: false,
-      exercise: {}
+      editMode: exercise.id === id ? false : editMode,
+      exercise: exercise.id === id ? {} : exercise
     }));
 
   handleExerciseSelectEdit = id =>

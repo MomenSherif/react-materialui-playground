@@ -17,9 +17,9 @@ import Form from './Form';
 const useStyles = makeStyles({
   paper: {
     padding: 20,
-    marginTop: 10,
-    marginBottom: 10,
-    height: 500,
+    marginTop: 5,
+    marginBottom: 5,
+    height: '500px',
     overflowY: 'auto'
   }
 });
@@ -45,7 +45,11 @@ const Exercises = ({
     .filter(([group]) => group.match(category))
     .map(([group, exercises], i) => (
       <Fragment key={group}>
-        <Typography variant='subtitle1' style={{ textTransform: 'capitalize' }}>
+        <Typography
+          variant='subtitle1'
+          color='secondary'
+          style={{ textTransform: 'capitalize' }}
+        >
           {group}
         </Typography>
         <List component='ul' aria-label='Exercises List'>
@@ -56,6 +60,7 @@ const Exercises = ({
                 <IconButton
                   edge='end'
                   aria-label='edit'
+                  color='primary'
                   onClick={() => onSelectEdit(id)}
                 >
                   <Edit />
@@ -64,6 +69,7 @@ const Exercises = ({
                 <IconButton
                   edge='end'
                   aria-label='delete'
+                  color='primary'
                   onClick={() => onDelete(id)}
                 >
                   <Delete />
@@ -76,22 +82,29 @@ const Exercises = ({
     ));
 
   return (
-    <Container maxWidth='xl'>
+    <Container maxWidth='lg'>
       <Grid container spacing={2}>
-        <Grid item sm>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>{exercisesList}</Paper>
         </Grid>
-        <Grid item sm>
-          {editMode ? (
-            <Form muscles={muscles} exercise={exercise} onSubmit={onEdit} />
-          ) : (
-            <Paper className={classes.paper}>
-              <Typography variant='h2'>{title}</Typography>
-              <Typography variant='body1' style={{ marginTop: 20 }}>
-                {description}
-              </Typography>
-            </Paper>
-          )}
+        <Grid item xs={12} md={6}>
+          <Paper className={classes.paper}>
+            {editMode ? (
+              <Form
+                key={id}
+                muscles={muscles}
+                exercise={exercise}
+                onSubmit={onEdit}
+              />
+            ) : (
+              <Fragment>
+                <Typography variant='h2' color='secondary' gutterBottom>
+                  {title}
+                </Typography>
+                <Typography variant='body1'>{description}</Typography>
+              </Fragment>
+            )}
+          </Paper>
         </Grid>
       </Grid>
     </Container>
