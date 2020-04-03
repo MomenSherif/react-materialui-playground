@@ -21,8 +21,8 @@ const Footer = ({ muscles, category, onSelect, width }) => {
       <Tabs
         value={index}
         onChange={onIndexSelect}
-        indicatorColor='secondary'
-        textColor='secondary'
+        indicatorColor='primary'
+        textColor='primary'
         centered={!['xs', 'sm'].includes(width)}
         variant={['xs', 'sm'].includes(width) ? 'scrollable' : 'standard'}
       >

@@ -47,7 +47,7 @@ const Exercises = ({
       <Fragment key={group}>
         <Typography
           variant='subtitle1'
-          color='secondary'
+          color='primary'
           style={{ textTransform: 'capitalize' }}
         >
           {group}
@@ -98,7 +98,7 @@ const Exercises = ({
               />
             ) : (
               <Fragment>
-                <Typography variant='h2' color='secondary' gutterBottom>
+                <Typography variant='h2' color='primary' gutterBottom>
                   {title}
                 </Typography>
                 <Typography variant='body1'>{description}</Typography>
